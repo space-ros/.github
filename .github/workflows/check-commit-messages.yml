@@ -1,0 +1,32 @@
+name: Commit message standards checks
+
+on:
+  pull_request:
+
+jobs:
+  check_issue_references:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          submodules: recursive
+          # Don't do a shallow clone since we need to poke around in the Git history
+          fetch-depth: 0
+
+      - name: Check that every commit name includes an issue reference like "#1"
+        run: |
+          set -eo pipefail
+          IFS=$'\n'
+          commits=$(git log --oneline origin/${{github.base_ref}}..origin/${{github.head_ref}})
+          for commit in $commits
+          do
+            if [[ $commit =~ ^.*#[0-9]+.*$ ]];
+            then
+              continue
+            else
+              echo "Found commit with no issue number: $commit"
+              exit 1
+            fi
+          done
