@@ -3,24 +3,6 @@ description: Create a report to help us improve
 labels: ["bug"]
 body:
   - type: input
-    id: os
-    attributes:
-      label: Operating System
-      placeholder: OS and version (e.g. Windows 10, Ubuntu 16.04...)
-    validations:
-      required: true
-
-  - type: dropdown
-    id: installation-type
-    attributes:
-      label: Installation type
-      options:
-        - Pulled from Docker Hub
-        - Local source build
-    validations:
-      required: true
-
-  - type: input
     id: version
     attributes:
       label: Version or commit hash
@@ -37,18 +19,6 @@ body:
         - CycloneDDS
         - RTIConnextDDS
         - Other
-    validations:
-      required: true
-
-  - type: dropdown
-    id: rcl
-    attributes:
-      label: Client library (if applicable)
-      options:
-        - rclcpp
-        - rclpy
-        - Other
-        - N/A
     validations:
       required: true
 
