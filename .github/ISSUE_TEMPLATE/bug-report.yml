@@ -7,34 +7,15 @@ body:
     attributes:
       label: Version or commit hash
       placeholder: Output of git rev-parse HEAD, release version, or repos file
-    validations:
-      required: true
-
-  - type: dropdown
-    id: rmw_implementation
-    attributes:
-      label: RMW Implementation
-      options:
-        - FastRTPS
-        - CycloneDDS
-        - RTIConnextDDS
-        - Other
-    validations:
-      required: true
-
-  - type: textarea
-    id: repro-steps
-    attributes:
-      label: Steps to reproduce issue
-      placeholder: Detailed instructions on how to reliably reproduce this issue http://sscce.org/. Code that can be copy-pasted is preferred.
+      value: rolling
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
-      placeholder: Tell us what should happen
+      label: Steps to reproduce issue and expected behavior
+      placeholder: Detailed instructions on what the issue is and how to reliably reproduce this issue http://sscce.org/. Code that can be copy-pasted is preferred.
     validations:
       required: true
 
